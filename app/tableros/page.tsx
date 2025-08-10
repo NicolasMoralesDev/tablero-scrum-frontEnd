@@ -1,8 +1,8 @@
 import React from 'react'
 
 export const metadata = {
- title: 'SEO Title',
- description: 'SEO Title',
+ title: 'Poyectos',
+ description: 'Listado de proyectos scrum creados',
 };
 
 const tableros = () => {
