@@ -2,4 +2,6 @@
 .git
 README.md
 dockerfile
+Dockerfile
+npm-debug.log
 node_modules
