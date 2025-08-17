@@ -34,7 +34,7 @@ body {
 
 .btn-celeste {
   @apply bg-sky-500/100 hover:bg-sky-600/100;
-  color: white;
+  @apply text-white;
   border-radius: 4px;
   font-size: 16px;
   font-weight: 500;

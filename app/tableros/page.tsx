@@ -13,15 +13,13 @@ const tableros = () => {
   return (
       <>
       <h1>Tableros Scrum</h1>
-      <Container maxWidth="s" sx={{ mt: 4, mb: 4, gap: 5, display: 'flex', alignItems: 'center', flexFlow: 'wrap', justifyContent: 'space-evenly' }}>
-        
+      <Container  maxWidth='xl' sx={{ mt: 4, mb: 4, gap: 3, display: 'flex', alignItems: 'center', justifyContent:'center', flexFlow: 'wrap' }}>
         <Tablero />
         <Tablero />
         <Tablero />
         <Tablero />
         <Tablero />
         <Tablero />
-
       </Container>
       </>
   )

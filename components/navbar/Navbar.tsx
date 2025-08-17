@@ -1,3 +1,4 @@
+"use client";
 import { AppBar, Container, 
     Toolbar, 
     Typography, 
@@ -16,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ titulo }) => {
 
   return (
     <nav>
-        <AppBar position="static"style={{  background: 'black' }}>
+      <AppBar position="static" style={{  background: 'black' }}>
       <Container maxWidth="xl" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Toolbar disableGutters>
           <AdbIco sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -44,7 +45,6 @@ export const Navbar: React.FC<NavbarProps> = ({ titulo }) => {
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',

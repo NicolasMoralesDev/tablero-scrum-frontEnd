@@ -1,19 +1,23 @@
-import { Card, CardContent, Typography, CardActions } from '@mui/material'
 import React from 'react'
-import style from './Tablero.module.css'
+import { CarRental } from '@mui/icons-material'
+import { Card, CardContent, Typography, CardActions, Container } from '@mui/material'
 
 export const Tablero = () => {
   return (
     <>
-      <Card className={ style.card } sx={ { minWidth: 300, maxWidth: 355, minHeight: 50 } }>
+      <Card sx={ { minWidth: '20%', maxWidth: "25%" } }>
       <CardContent>
-        <Typography variant="h5" component="div">
-          benevolent
+        <Container sx={{ display: 'flex', gap: '1em' }}> 
+         <CarRental color='success'/>
+        <Typography component="h2" variant='h5' sx={{ fontWeight: 'bold', color: 'text.primary' }}>
+          Benevolent
         </Typography>
-        <Typography sx={{ color: 'text.secondary', mb: 1 }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. </Typography>
+        </Container>
+        <Typography component='p' sx={{ color: 'text.secondary', mb: 1 }}>Lorem adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. </Typography>
+        <span>Tareas</span>
       </CardContent>
-      <CardActions sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-        <button className='btn-celeste'>Abrir Tablero</button>
+      <CardActions sx={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '1em' }}>
+        <button style={{ width: '100%'}} className='btn-celeste'>Abrir Tablero</button>
       </CardActions>
     </Card>
     </>
