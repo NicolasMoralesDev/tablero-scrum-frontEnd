@@ -1,4 +1,3 @@
-
 import { Tablero } from '@/components/tablero/Tablero';
 import { Container } from '@mui/material';
 import { Metadata } from 'next';
@@ -11,7 +10,7 @@ export const metadata : Metadata = {
 
 const tableros = () => {
   return (
-      <>
+    <>
       <h1>Tableros Scrum</h1>
       <Container  maxWidth='xl' sx={{ mt: 4, mb: 4, gap: 3, display: 'flex', alignItems: 'center', justifyContent:'center', flexFlow: 'wrap' }}>
         <Tablero />
@@ -21,7 +20,7 @@ const tableros = () => {
         <Tablero />
         <Tablero />
       </Container>
-      </>
+    </>
   )
 }
 
