@@ -21,7 +21,7 @@ export default function NotFound() {
       height={ 500 }
       width={ 900 } 
       src={ error }/>
-      <Link href='/' style={{ textDecoration: 'none' }}>
+      <Link href='/tableros' style={{ textDecoration: 'none' }}>
         <Button variant='contained' startIcon={ <ArrowLeft /> } >
           Volver al inicio
         </Button>
