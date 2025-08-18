@@ -1,15 +1,1 @@
-FROM node:18-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
-EXPOSE 3001
-
-CMD ["npm", "start"]   # arranca la app en el contenedor
+FROM nicodev10/utilidades:next-js-base-1.0
