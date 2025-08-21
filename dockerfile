@@ -1,0 +1,1 @@
+FROM nicodev10/utilidades:next-js-base-1.0
