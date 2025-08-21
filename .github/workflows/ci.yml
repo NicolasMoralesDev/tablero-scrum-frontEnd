@@ -16,17 +16,23 @@ jobs:
     runs-on: ubuntu-latest
     environment: desa
     steps:
-      - name: Checkout del repositorio
-        uses: actions/checkout@v4
-
-      - name: Use Node.js 22
+      
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-         node-version: 22
-      - run: npm ci
-      - run: npm run build --if-present
+          node-version: "18"
+          cache: "npm"
 
-      - name: Subir artefacto
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test --if-present
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Upload production-ready build
         uses: actions/upload-artifact@v4
         with:
           name: next-build
