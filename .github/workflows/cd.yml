@@ -34,7 +34,7 @@ jobs:
 
       - name: Construir y subir imagen
         env:
-          IMAGE_TAG: ${{ github.ref_name }}-${{ steps.short-sha.outputs.sha }}
+          IMAGE_TAG: ${{ replace(github.ref_name, '/', '-') }}-${{ steps.short-sha.outputs.sha }}
         run: |
           echo "Construyendo la imagen: $IMAGE_NAME:$IMAGE_TAG"
           docker build . -t $IMAGE_NAME:$IMAGE_TAG
