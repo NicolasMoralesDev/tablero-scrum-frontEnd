@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install dependencies
+      - name: Instalar dependencias
         run: npm ci
 
       - name: Run tests
@@ -34,10 +34,10 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      - name: Prepare production build
+      - name: Preparar build
         run: mv .next/ next-build-temp/
 
-      - name: Upload production-ready build
+      - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: next-build

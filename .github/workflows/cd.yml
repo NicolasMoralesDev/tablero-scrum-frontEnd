@@ -5,8 +5,6 @@ on:
 
 env:
   IMAGE_TAG: ${{ github.ref_name }}${{ github.sha }}
-  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.NOMBRE_BASE }}
-
 jobs:
   deploy_job:
     name: Construir y subir Docker
@@ -23,6 +21,10 @@ jobs:
           name: next-build
           path: .next
           repo: ${{ github.repository }}
+          
+      - name: Obtener el SHA corto de commit
+        id: short-sha
+        uses: benjlevesque/short-sha@v3.0
 
       - name: Login Docker Hub
         uses: docker/login-action@v3
@@ -31,6 +33,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Construir y subir imagen
+        env:
+          IMAGE_TAG: ${{ github.ref_name }}-${{ steps.short-sha.outputs.sha }}
         run: |
           echo "Construyendo la imagen: $IMAGE_NAME:$IMAGE_TAG"
           docker build . -t $IMAGE_NAME:$IMAGE_TAG
