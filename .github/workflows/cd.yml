@@ -5,7 +5,7 @@ on:
 
 env:
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.NOMBRE_BASE }}
-  IMAGE_RAMA: ${{ replace(github.ref_name, '/', '-') }}
+
 jobs:
   deploy_job:
     name: Construir y subir Docker
@@ -27,6 +27,12 @@ jobs:
         id: short-sha
         uses: benjlevesque/short-sha@v3.0
 
+      - name: Sanitizar nombre de la rama
+        id: branch_name
+        run: |
+          SANITIZED_BRANCH=$(echo "${{ github.ref_name }}" | sed 's/\//-/g')
+          echo "sanitized_branch=${SANITIZED_BRANCH}" >> $GITHUB_OUTPUT
+
       - name: Login Docker Hub
         uses: docker/login-action@v3
         with:
@@ -34,9 +40,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Construir y subir imagen
-        run: |   
-          
-          IMAGE_TAG: ${{ env.IMAGE_RAMA }}-${{ steps.short-sha.outputs.sha }}
-          echo "Construyendo la imagen: $IMAGE_NAME:$IMAGE_TAG"
-          docker build . -t $IMAGE_NAME:$IMAGE_TAG
-          docker push $IMAGE_NAME:$IMAGE_TAG
+        run: |
+          IMAGE_TAG="${{ steps.branch_name.outputs.sanitized_branch }}-${{ steps.short-sha.outputs.sha }}"
+          echo "Construyendo la imagen: ${{ env.IMAGE_NAME }}:${IMAGE_TAG}"
+          docker build . -t ${{ env.IMAGE_NAME }}:${IMAGE_TAG}
+          docker push ${{ env.IMAGE_NAME }}:${IMAGE_TAG}
