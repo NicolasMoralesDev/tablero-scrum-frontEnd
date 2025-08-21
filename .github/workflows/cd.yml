@@ -20,8 +20,8 @@ jobs:
         uses: dawidd6/action-download-artifact@v3
         with:
           workflow: ci.yml
-          name: app-artifact
-          path: target
+          name: next-build
+          path: .next
           repo: ${{ github.repository }}
 
       - name: Login Docker Hub
