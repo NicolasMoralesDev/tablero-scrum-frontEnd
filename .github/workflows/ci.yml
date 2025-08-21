@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ feature/**, release/** ]
+  pull_request:
+    branches: [ main, develop, release/** ]
+
+env:
+  IMAGE_TAG: ${{ github.sha }}
+  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.NOMBRE_BASE }}
+
+jobs:
+  build_job:
+    name: Compilar la app
+    runs-on: ubuntu-latest
+    environment: desa
+    steps:
+      
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test --if-present
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Check root directory
+        run: mv .next/ next-build-temp/
+
+      - name: Check .next folder
+        run: ls -la .next || echo ".next no existe"
+
+      - name: Upload production-ready build
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: next-build-temp/
