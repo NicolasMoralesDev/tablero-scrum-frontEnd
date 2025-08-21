@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_TAG: ${{ github.ref_name }}-${{ github.sha }}
+  IMAGE_TAG: ${{ github.ref_name }}${{ github.sha }}
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.NOMBRE_BASE }}
 
 jobs:
