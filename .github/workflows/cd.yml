@@ -34,9 +34,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Construir y subir imagen
-        env:
+        run: |   
+          
           IMAGE_TAG: ${{ env.IMAGE_RAMA }}-${{ steps.short-sha.outputs.sha }}
-        run: |
           echo "Construyendo la imagen: $IMAGE_NAME:$IMAGE_TAG"
           docker build . -t $IMAGE_NAME:$IMAGE_TAG
           docker push $IMAGE_NAME:$IMAGE_TAG
