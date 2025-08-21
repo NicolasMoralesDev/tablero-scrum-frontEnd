@@ -1,6 +1,6 @@
-import { Tablero } from '@/components/tablero/Tablero';
-import { Container } from '@mui/material';
-import { Metadata } from 'next';
+import { Tablero } from '@/components/tablero/Tablero'
+import { Container, Typography } from '@mui/material'
+import { Metadata } from 'next'
 import React from 'react'
 
 export const metadata : Metadata = {
@@ -11,7 +11,7 @@ export const metadata : Metadata = {
 const tableros = () => {
   return (
     <>
-      <h1>Tableros Scrum</h1>
+      <Typography variant='h3' align='center'>Proyectos</Typography>
       <Container  maxWidth='xl' sx={{ mt: 4, mb: 4, gap: 3, display: 'flex', alignItems: 'center', justifyContent:'center', flexFlow: 'wrap' }}>
         <Tablero />
         <Tablero />
